@@ -20,7 +20,7 @@ const InnerCourse = () => {
 
       {/* Hero Section */}
       <img src={bg} alt="" className="" />
-
+  
       {/* Course Info Card */}
       <div className="container flex justify-center gap-20 mx-auto px-4 mt-16">
         <div className="container lg:h-96 mx-auto shadow-xl rounded-xl p-5 -mt-40 bg-[#f1f8ffab] text-left md:text-lef ">
