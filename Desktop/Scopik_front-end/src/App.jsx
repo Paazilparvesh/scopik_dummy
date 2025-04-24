@@ -1,28 +1,25 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "/src/Pages/Home.jsx";
-import Header from "./Components/Header.jsx";
-import Footer from "./Components/Footer.jsx";
 import InnerCourse from "./Pages/InnerCourse.jsx";
 import StudentDashboard from "/src/Pages/StudentDashboard.jsx";
+import Login from "/src/Pages/Login.jsx";
+import MainLayout from "/src/Components/MainLayout.jsx"; // new layout
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        {/* Wrap common pages inside MainLayout */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<InnerCourse />} />
+          <Route path="/student_dashboard" element={<StudentDashboard />} />
+        </Route>
 
-        <Header />
-
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/courses" element={<InnerCourse/>}></Route>
-          <Route path="/student_dashboard" element={<StudentDashboard/>}></Route>
-          
-        </Routes>
-
-        <Footer />
-
-      </BrowserRouter>
-    </>
+        {/* No header/footer on login */}
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

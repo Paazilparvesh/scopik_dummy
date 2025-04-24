@@ -21,7 +21,7 @@ function Header() {
           </Link>
         </div>
 
-        <div className=" m-auto gap-10 text-black hidden sm:flex ">
+        <div className=" m-auto gap-10 text-white hidden sm:flex ">
           <Link to="/" className="">
             Home
           </Link>
