@@ -25,51 +25,15 @@ function Header() {
           <Link to="/" className="">
             Home
           </Link>
-          <Link to="/" className="">
-            Category
-          </Link>
-          <Link to="/" className="">
+          <Link to="/course" className="">
             Courses
           </Link>
-          <div className="dropdown">
-            <a href="#" className="">
-              Login
-            </a>
-            {/* <div className="m-0">
-                    {teacherLoginStatus !='true' && 
-                    <>
-                      <li><Link className="" to="/">teacher</Link></li>
-                      <li><Link className="" to="/">Teacher</Link></li>
-                    </>
-                    }
-                    {studentLoginStatus !='true' && 
-                    <>
-                      <li><Link className="" to="/">student</Link></li>
-                      <li><Link className="" to="/">Register</Link></li>
-                    </>
-                    }
-                   
-                    </div> */}
-          </div>
-          <div className=" dropdown">
-            <a href="#" className="ps-0 px-5" data-bs-toggle="dropdown">
-              Student
-            </a>
-            {/* <div class="m-0">
-                    {studentLoginStatus !='true' && 
-                    <>
-                      <li><Link className="" to="/">Login</Link></li>
-                      <li><Link className="" to="/">Register</Link></li>
-                    </>
-                    }
-                    {studentLoginStatus === 'true' &&
-                    <>
-                      <li><Link className="" to="/">Dashboard</Link></li>
-                      <li><Link className="" to="/user-logout">Logout</Link></li>
-                    </>
-                    }
-                    </div> */}
-          </div>
+          <Link to="/" className="">
+            Blog
+          </Link>
+          <Link to="/" className="">
+            Contact
+          </Link>
           <a
             className=""
             target="__blank"
@@ -80,7 +44,7 @@ function Header() {
         </div>
 
         <div className="my-auto gap-2 sm:flex hidden">
-          <Link to="/" className="px-4 py-2 m-auto rounded-3xl bg-white">
+          <Link to="/login" className="px-4 py-2 m-auto rounded-3xl bg-white">
             Login
           </Link>
           <Link

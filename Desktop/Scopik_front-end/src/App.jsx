@@ -4,6 +4,8 @@ import InnerCourse from "./Pages/InnerCourse.jsx";
 import StudentDashboard from "/src/Pages/StudentDashboard.jsx";
 import Login from "/src/Pages/Login.jsx";
 import MainLayout from "/src/Components/MainLayout.jsx"; // new layout
+import Courses from "./Pages/Courses.jsx";
+import BlogPage from "./Pages/BlogPage.jsx";
 
 function App() {
   return (
@@ -12,8 +14,10 @@ function App() {
         {/* Wrap common pages inside MainLayout */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<InnerCourse />} />
+          <Route path="/course" element={<Courses/>}></Route>
+          <Route path="/individual_course" element={<InnerCourse />} />
           <Route path="/student_dashboard" element={<StudentDashboard />} />
+          <Route path="/blog" element={<BlogPage/>}></Route>
         </Route>
 
         {/* No header/footer on login */}

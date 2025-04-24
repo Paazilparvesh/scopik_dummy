@@ -82,7 +82,7 @@ import logoutIcon from "/src/assets/StudentDashboard/icon8.png";
 
 const Sidebar = () => {
   return (
-    <div className="bg-[#0A2E6C] h-[380px] xl:h-[720px] transition-all duration-300 group mx-5 my-5 xl:mx-10 xl:my-10 xl:w-20 w-14 hover:w-56 flex flex-col items-start py-6 px-4 rounded-2xl overflow-hidden">
+    <div className="bg-[#0A2E6C] h-[55px] hover:h-full xl:hover:h-[720px] lg:h-[720px] transition-all duration-300 group mx-5 my-5 xl:mx-10 xl:my-10 xl:w-20 w-14 hover:w-96 flex flex-col items-start py-2 md:py-6 px-2 md:px-4 rounded-xl md:rounded-2xl overflow-hidden relative z-10">
       
       {/* Profile Section */}
       <div className="flex items-center gap-3 w-full mb-6">

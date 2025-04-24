@@ -1,42 +1,16 @@
-import "/src/index.css";   
-import image1 from "/src/assets/scopik 32.png";
-import image2 from "/src/assets/scopik 34.png";
-import image3 from "/src/assets/scopik 43.png";
-import image4 from "/src/assets/vr.png";
+import "/src/index.css";
+import { Courses } from "../Pages/Courses";
+
+
 function CourseCard() {
 
-  const Courses = [
-    {
-      id: 1,
-      image: image1,
-      title: "Python",
-      description: "Learn Python programming from scratch",
-    },
-    {
-      id: 2,
-      image: image2,
-      title: "React",
-      description: "Learn Python programming from scratch",
-    },
-    {
-      id: 3,
-      image: image3,
-      title: "App Development",
-      description: "Learn Python programming from scratch",
-    },
-    {
-      id: 4,
-      image: image4,
-      title: "Java",
-      description: "Master Java programming and build robust applications.",
-    },
-  ];
-
+  const first = Courses.slice(0,4);
+    
   return (
     <>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 lg:mx-20 gap-5">
-        {Courses.map((course,index) => (
+        {first.map((course,index) => (
           <div key={index} className="w-full rounded-lg overflow-hidden shadow-lg font-[Segeo UI] bg-white text-center">
             <div className="card-image">
               <img src={course.image} alt="Course" className="w-full object-fit" />
