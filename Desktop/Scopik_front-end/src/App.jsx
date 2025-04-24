@@ -3,6 +3,7 @@ import Home from "/src/Pages/Home.jsx";
 import Header from "./Components/Header.jsx";
 import Footer from "./Components/Footer.jsx";
 import InnerCourse from "./Pages/InnerCourse.jsx";
+import StudentDashboard from "/src/Pages/StudentDashboard.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/courses" element={<InnerCourse/>}></Route>
+          <Route path="/student_dashboard" element={<StudentDashboard/>}></Route>
           
         </Routes>
 
