@@ -1,5 +1,6 @@
 import React from "react";
 import Learn from "/src/Components/Learn.jsx"
+import Syllabus from "/src/Components/Syllabus.jsx"
 // import { Button } from "@/components/ui/button";
 // import { Card, CardContent } from "@/components/ui/card";
 
@@ -88,23 +89,7 @@ const InnerCourse = () => {
       </div>
 
       {/* Course Syllabus */}
-      <div className="container mx-auto px-4 py-6">
-        <h3 className="text-xl font-semibold text-purple-600">
-          Course Syllabus
-        </h3>
-        <ul className="mt-4 space-y-4">
-          <li>
-            <strong>LMS Orientation</strong>
-            <ul className="ml-4 list-disc">
-              <li>LMS Login</li>
-              <li>Intro</li>
-            </ul>
-          </li>
-          <li>Elective - Sound Design</li>
-          <li>Video Production</li>
-          <li>VR Application Development</li>
-        </ul>
-      </div>
+      <Syllabus/>
 
       {/* Instructor Section */}
       <div className="container mx-auto px-4 py-10">

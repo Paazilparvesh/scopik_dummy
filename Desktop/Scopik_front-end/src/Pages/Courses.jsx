@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import image1 from "/src/assets/scopik 32.png";
@@ -6,8 +6,11 @@ import image2 from "/src/assets/scopik 34.png";
 import image3 from "/src/assets/scopik 43.png";
 import image4 from "/src/assets/vr.png";
 
+import prem from "/src/assets/shield-security.png";
+import time from "/src/assets/timer-start.png"
+import star from "/src/assets/star.png"
 
-const categories = ["ALL","UI/UX Designer", "AR/VR", "AI", "3D Designer"];
+const categories = ["ALL", "UI/UX Designer", "AR/VR", "AI", "3D Designer"];
 
 const Courses = [
   {
@@ -16,6 +19,7 @@ const Courses = [
     title: "Python",
     description: "Learn Python programming from scratch",
     category: "UI/UX Designer",
+
   },
   {
     id: 2,
@@ -45,39 +49,38 @@ const Courses = [
     description: "Master Java programming and build robust applications.",
     category: "UI/UX Designer",
   },
-
 ];
-export {Courses};
+export { Courses };
 
 export default function Course() {
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const [isOpen, setIsOpen] = useState(false);
-    
-    const toggleMenu = () => {
-      setIsOpen(!isOpen);
-    };
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-    const [selectedCategory, setSelectedCategory] = useState("All");
-
-    const filteredCourses = selectedCategory === "All" ? Courses : Courses.filter((course) => course.category === selectedCategory);
+  const filteredCourses =
+    selectedCategory === "All"
+      ? Courses
+      : Courses.filter((course) => course.category === selectedCategory);
 
   return (
     <>
       <div className="flex justify-center items-start">
-
         <aside className="md:sticky md:top-28 hidden md:flex w-96 h-96 py-10 px-10 mx-10 my-20 p-4 bg-gray-100 rounded-xl shadow-lg">
           <ul className="space-y-5 flex flex-col justify-center">
             {categories.map((cat, i) => (
-                <a>
-              <li
-                key={i}
-                onClick={() => setSelectedCategory(cat)}
-                className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
-              >
-                {cat}
-                <span className="text-xl mx-10">›</span>
-              </li>
+              <a>
+                <li
+                  key={i}
+                  onClick={() => setSelectedCategory(cat)}
+                  className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
+                >
+                  {cat}
+                  <span className="text-xl mx-10">›</span>
+                </li>
               </a>
             ))}
           </ul>
@@ -86,32 +89,51 @@ export default function Course() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 lg:mx-20 gap-5">
           {filteredCourses.map((course, index) => (
             <Link to={`/course/${course.id}`}>
-            <div
-              key={index}
-              // onClick={() => setSelectedCategory(course)}
-              className="w-full rounded-lg overflow-hidden shadow-lg font-[Segeo UI] bg-white text-center"
-            >
-              <div className="card-image">
-                <img
-                  src={course.image}
-                  alt="Course"
-                  className="w-full object-fit"
-                />
+              <div
+                key={index}
+                // onClick={() => setSelectedCategory(course)}
+                className="w-full rounded-lg overflow-hidden shadow-lg font-[Segeo UI] bg-white text-left"
+              >
+                <div className="card-image">
+                  <img
+                    src={course.image}
+                    alt="Course"
+                    className="w-full object-fit"
+                  />
+                </div>
+                <div className="py-4 px-2 w-full">
+                  <span className=" flex items-center text-sm gap-1">
+                    <img src={prem} alt="" className="size-4" />
+                    Premium
+                  </span>
+                  <h1 className="text-3xl text-[#2d1d7b] mb-2">
+                    {course.title}
+                  </h1>
+                  <p className="text-1xl text-[#555] mb-2">
+                    {course.description}
+                  </p>
+                  <span className="flex items-center gap-2 my-4 mx-2">
+                    <img src={star} alt="" className="" />
+                    <img src={star} alt="" className="" />
+                    <img src={star} alt="" className="" />
+                    <img src={star} alt="" className="" />
+                    <img src={star} alt="" className="" />
+                    18,000
+                  </span>
+                  <div className="flex justify-between items-center mx-2">
+                      <span className="flex gap-1 items-center ">
+                        <img src={time} alt="" className="size-5" />
+                        52 Hrs
+                      </span>
+                    <button className="bg-[#4c33f0] text-white p-2 border-0 rounded-lg text-sm cursor-pointer hover:bg-[#3724c0]">
+                      <Link to={`/course/${course.id}`}>Enroll Now</Link>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="py-4 px-2 w-full">
-                <h1 className="text-2xl text-[#2d1d7b] mb-4">{course.title}</h1>
-                <p className="text-1xl text-[#555] mb-4">
-                  {course.description}
-                </p>
-                <button className="bg-[#4c33f0] text-white p-2 border-0 rounded-lg text-sm cursor-pointer hover:bg-[#3724c0]"><Link to={`/course/${course.id}`}>
-                  Enroll Now</Link>
-                </button>
-              </div>
-            </div>
             </Link>
           ))}
         </div>
-
 
         <div className="sm:hidden flex relative">
           <svg
@@ -150,26 +172,23 @@ export default function Course() {
                   onClick={toggleMenu}
                 />
               </svg>
-              
-              <ul className="space-y-5">
-            {categories.map((cat, i) => (
-                <a>
-              <li
-                key={i}
-                className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
-              >
-                {cat}
-                <span className="text-xl">›</span>
-              </li>
-              </a>
-            ))}
-          </ul>
 
+              <ul className="space-y-5">
+                {categories.map((cat, i) => (
+                  <a>
+                    <li
+                      key={i}
+                      className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
+                    >
+                      {cat}
+                      <span className="text-xl">›</span>
+                    </li>
+                  </a>
+                ))}
+              </ul>
             </div>
           )}
         </div>
-
-
       </div>
     </>
   );
