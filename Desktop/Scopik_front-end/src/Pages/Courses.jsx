@@ -1,9 +1,11 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom";
 
 import image1 from "/src/assets/scopik 32.png";
 import image2 from "/src/assets/scopik 34.png";
 import image3 from "/src/assets/scopik 43.png";
 import image4 from "/src/assets/vr.png";
+
 
 const categories = ["UI/UX Designer", "AR/VR", "AI", "3D Designer"];
 
@@ -20,21 +22,21 @@ const Courses = [
     image: image2,
     title: "React",
     description: "Learn Python programming from scratch",
-    category: "UI/UX Designer",
+    category: "AR/VR",
   },
   {
     id: 3,
     image: image3,
     title: "App Development",
     description: "Learn Python programming from scratch",
-    category: "UI/UX Designer",
+    category: "AI",
   },
   {
     id: 4,
     image: image4,
     title: "Java",
     description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
+    category: "3D Designer",
   },
   {
     id: 5,
@@ -43,91 +45,34 @@ const Courses = [
     description: "Master Java programming and build robust applications.",
     category: "UI/UX Designer",
   },
-  {
-    id: 6,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 7,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 8,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 9,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 10,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 11,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 12,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 13,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
-  {
-    id: 14,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
+
 ];
 export {Courses};
 
 export default function Course() {
 
+
+    const [isOpen, setIsOpen] = useState(false);
+    
+    const toggleMenu = () => {
+      setIsOpen(!isOpen);
+    };
+
     const [selectedCategory, setSelectedCategory] = useState("All");
 
-    const filteredCourses =
-    selectedCategory === "All"
-      ? Courses
-      : Courses.filter((course) => course.category === selectedCategory);
+    const filteredCourses = selectedCategory === "All" ? Courses : Courses.filter((course) => course.category === selectedCategory);
 
   return (
     <>
       <div className="flex justify-center items-start">
 
-        <aside className="sticky top-28 w-96 h-96 py-10 px-10 mx-10 my-20 p-4 bg-gray-100 rounded-xl shadow-lg">
+        <aside className="md:sticky md:top-28 hidden md:flex w-96 h-96 py-10 px-10 mx-10 my-20 p-4 bg-gray-100 rounded-xl shadow-lg">
           <ul className="space-y-5">
             {categories.map((cat, i) => (
                 <a>
               <li
                 key={i}
+                onClick={() => setSelectedCategory(cat)}
                 className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
               >
                 {cat}
@@ -140,8 +85,10 @@ export default function Course() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 lg:mx-20 gap-5">
           {filteredCourses.map((course, index) => (
+            <Link to={`/course/${course.id}`}>
             <div
               key={index}
+              // onClick={() => setSelectedCategory(course)}
               className="w-full rounded-lg overflow-hidden shadow-lg font-[Segeo UI] bg-white text-center"
             >
               <div className="card-image">
@@ -156,13 +103,73 @@ export default function Course() {
                 <p className="text-1xl text-[#555] mb-4">
                   {course.description}
                 </p>
-                <button className="bg-[#4c33f0] text-white p-2 border-0 rounded-lg text-sm cursor-pointer hover:bg-[#3724c0]">
-                  Enroll Now
+                <button className="bg-[#4c33f0] text-white p-2 border-0 rounded-lg text-sm cursor-pointer hover:bg-[#3724c0]"><Link to={`/course/${course.id}`}>
+                  Enroll Now</Link>
                 </button>
               </div>
             </div>
+            </Link>
           ))}
         </div>
+
+
+        <div className="sm:hidden flex relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+            onClick={toggleMenu}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
+            />
+          </svg>
+
+          {isOpen && (
+            <div
+              className="md:hidden  bg-white space-y-2 absolute top-0 -right-80 w-64 h-96 p-5 shadow-lg rounded-lg"
+              style={{ transition: "2s", transform: "translatex(-285px)" }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="size-6 md:hidden absolute top-5 right-5 "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                  onClick={toggleMenu}
+                />
+              </svg>
+              
+              <ul className="space-y-5">
+            {categories.map((cat, i) => (
+                <a>
+              <li
+                key={i}
+                className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
+              >
+                {cat}
+                <span className="text-xl">›</span>
+              </li>
+              </a>
+            ))}
+          </ul>
+
+            </div>
+          )}
+        </div>
+
+
       </div>
     </>
   );

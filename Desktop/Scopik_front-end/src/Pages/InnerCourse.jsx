@@ -4,6 +4,7 @@ import Learn from "/src/Components/Learn.jsx"
 // import { Card, CardContent } from "@/components/ui/card";
 
 import CourseCard from "/src/Components/CourseCard.jsx"
+import { Courses } from "./Courses";
 
 import bg from "/src/assets/Rectangle 2129.jpg";
 import icon1 from "/src/assets/personalcard.png";
@@ -13,33 +14,37 @@ import icon4 from "/src/assets/certificate.png";
 
 import instructor from "/src/assets/Instructor.png"
 import certificate from "/src/assets/Big Data for Social Good Certificate.jpg"
+import { useParams } from "react-router-dom";
 
 const InnerCourse = () => {
+
+  const { id } = useParams();
+  const individual = Courses.find((cor) => cor.id === Number(id))  || {} ;
+
   return (
     <div className="w-full bg-white text-gray-800">
 
       {/* Hero Section */}
-      <img src={bg} alt="" className="" />
+      <img src={bg} alt="" className="w-full" />
   
       {/* Course Info Card */}
       <div className="container flex justify-center gap-20 mx-auto px-4 mt-16">
         <div className="container lg:h-96 mx-auto shadow-xl rounded-xl p-5 -mt-40 bg-[#f1f8ffab] text-left md:text-lef ">
           <h1 className="text-5xl font-[Newsreader] font-bold mb-4 mt-3 text-[#00005C]">
-            Digital Marketing
+            {individual.title}
+            {/* Digital Marketing */}
           </h1>
           <p className="max-w-2xl mb-6 mt-6 text-black">
-            Lorem Ipsum has been the industry's standard dummy text ever since
+            {/* Lorem Ipsum has been the industry's standard dummy text ever since
             the 1500s, when an unknown printer took a galley of type and
             scrambled it to make a type specimen book. It has survived not only
             five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+            remaining essentially unchanged. */}
+            {individual.description}
           </p>
           <div className="flex justify-center md:justify-start gap-4 mt-20">
             <button className="bg-[#2600D0] text-white p-2 rounded-lg">
               Enroll Now
-            </button>
-            <button className="p-2 rounded-lg text-black border-2 border-[#5731FF]">
-              Enroll Group
             </button>
           </div>
         </div>
@@ -75,7 +80,7 @@ const InnerCourse = () => {
             </li>
           </ul>
         </div>
-      </div>
+    </div>
 
       {/* What You’ll Learn */}
       <div className=" mx-auto px-4 py-10">

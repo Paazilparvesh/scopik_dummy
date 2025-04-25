@@ -40,9 +40,11 @@ const blogs = [
 
 const BlogPage = () => {
 
-  const [selected, setSelected] = useState("All");
+  
 
-  const filteredBlogs = selected === "All" ? blogs : blogs.filter(blog => blog.category === selected);
+  const [selectedBlog, setSelectedBlog] = useState("All");
+
+  const filteredBlogs = selectedBlog === "All" ? blogs : blogs.filter(blog => blog.category === selectedBlog);
 
   return (
     <div className="bg-[#f9f9f9]">
@@ -57,9 +59,9 @@ const BlogPage = () => {
         {["All", ...categories].map((cat, index) => (
           <button
             key={index}
-            onClick={() => setSelected(cat)}
+            onClick={() => setSelectedBlog(cat)}
             className={`text-sm md:text-base px-4 py-2 whitespace-nowrap border-b-2 ${
-              selected === cat ? "border-black font-semibold" : "border-transparent text-gray-600"
+              selectedBlog === cat ? "border-black font-semibold" : "border-transparent text-gray-600"
             } hover:text-black transition`}
           >
             {cat}
@@ -70,13 +72,13 @@ const BlogPage = () => {
       {/* Blog Cards */}
       <div className="px-4 space-y-6 pb-10">
         {filteredBlogs.map((blog) => (
-          <div key={blog.id} className="bg-white rounded-xl shadow-md overflow-hidden">
-            <img src={blog.image} alt="blog" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800">{blog.title}</h2>
+          <div key={blog.id} className="bg-white md:bg-none md:flex md:justify-between md:mx-10 rounded-xl shadow-md md:shadow-none overflow-hidden">
+            <img src={blog.image} alt="blog" className="w-full md:w-1/2 object-cover" />
+            <div className="p-4 md:p-12 flex flex-col justify-between ">
+              <h2 className="text-lg text-start text-wrap font-semibold text-gray-800">{blog.title}</h2>
               <div className="text-sm text-gray-500 mt-2 flex justify-between">
                 <span>{blog.date}</span>
-                <a href="#" className="text-indigo-600 hover:underline">Read more</a>
+                <a href="#" className="text-indigo-600 hover:underline md:text-xl">Read more</a>
               </div>
             </div>
           </div>

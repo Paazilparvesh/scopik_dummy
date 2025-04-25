@@ -186,7 +186,7 @@ const Login = () => {
             Don't have an account?
           </span>
           <Link
-            to="/signup"
+            to="/register"
             className="text-sm text-blue-600 hover:underline"
           >
             Sign Up

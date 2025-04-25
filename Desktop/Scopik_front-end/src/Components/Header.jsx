@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "/src/assets/2088817079.png";
 
@@ -12,9 +12,34 @@ function Header() {
     setIsOpen(!isOpen);
   };
 
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY) {
+      // scrolling down
+      setShowNavbar(false);
+    } else {
+      // scrolling up
+      setShowNavbar(true);
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
     <>
-      <nav className="w-full flex justify-between items-center bg-[#1a3b7e] sticky top-0 px-10 z-50 shadow-lg ">
+      <nav className={`w-full flex justify-between items-center bg-[#1a3b7e] sticky top-0 px-10 z-50 shadow-lg ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}>
         <div className="p-5">
           <Link to="/">
             <img className="w-12 h-12 m-auto" src={logo} alt="Scopik Logo" />
@@ -28,11 +53,14 @@ function Header() {
           <Link to="/course" className="">
             Courses
           </Link>
-          <Link to="/" className="">
+          <Link to="/blog" className="">
             Blog
           </Link>
           <Link to="/" className="">
             Contact
+          </Link>
+          <Link to="/student_dashboard" className="">
+            Student Dashboard
           </Link>
           <a
             className=""
@@ -48,7 +76,7 @@ function Header() {
             Login
           </Link>
           <Link
-            to="/"
+            to="/register"
             className="text-white px-4 py-2 m-auto rounded-3xl bg-black"
           >
             Register
@@ -111,45 +139,18 @@ function Header() {
               >
                 Contact
               </Link>
-              <div className="dropdown">
-                <a href="#" className="">
-                  Login
-                </a>
-                {/* <div className="m-0">
-                    {teacherLoginStatus !='true' && 
-                    <>
-                      <li><Link className="" to="/">teacher</Link></li>
-                      <li><Link className="" to="/">Teacher</Link></li>
-                    </>
-                    }
-                    {studentLoginStatus !='true' && 
-                    <>
-                      <li><Link className="" to="/">student</Link></li>
-                      <li><Link className="" to="/">Register</Link></li>
-                    </>
-                    }
-                   
-                    </div> */}
-              </div>
-              <div className=" dropdown">
-                <a href="#" className="ps-0 px-5" data-bs-toggle="dropdown">
-                  Student
-                </a>
-                {/* <div class="m-0">
-                    {studentLoginStatus !='true' && 
-                    <>
-                      <li><Link className="" to="/">Login</Link></li>
-                      <li><Link className="" to="/">Register</Link></li>
-                    </>
-                    }
-                    {studentLoginStatus === 'true' &&
-                    <>
-                      <li><Link className="" to="/">Dashboard</Link></li>
-                      <li><Link className="" to="/user-logout">Logout</Link></li>
-                    </>
-                    }
-                    </div> */}
-              </div>
+              <Link
+                to="/contact"
+                className="block text-gray-700 hover:text-blue-500"
+              >
+                Blog
+              </Link>
+              <Link
+                to="/contact"
+                className="block text-gray-700 hover:text-blue-500"
+              >
+                Course
+              </Link>
               <div>
                 <a
                   className=""
