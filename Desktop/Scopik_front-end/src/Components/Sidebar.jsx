@@ -97,13 +97,13 @@ const Sidebar = () => {
       </div>
 
       {/* Nav Items */}
-      <NavItem icon={dashboardIcon} label="Dashboard" active />
-      <NavItem icon={coursesIcon} label="My Courses" />
-      <NavItem icon={favIcon} label="Fav Courses" />
-      <NavItem icon={teacherIcon} label="My Teachers" />
-      <NavItem icon={assignmentIcon} label="Assignments" />
-      <NavItem icon={topIcon} label="Top Courses" />
-      <NavItem icon={settingsIcon} label="Settings" />
+      <NavItem to="" icon={dashboardIcon} label="Dashboard" active  />
+      <NavItem to="" icon={coursesIcon} label="My Courses" />
+      <NavItem to="" icon={favIcon} label="Fav Courses" />
+      <NavItem to="" icon={teacherIcon} label="My Teachers" />
+      <NavItem to="" icon={assignmentIcon} label="Assignments" />
+      <NavItem to="" icon={topIcon} label="Top Courses" />
+      <NavItem to="" icon={settingsIcon} label="Settings" />
 
       <div className="flex-grow" />
 

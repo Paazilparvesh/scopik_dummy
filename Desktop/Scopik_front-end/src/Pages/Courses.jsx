@@ -7,7 +7,7 @@ import image3 from "/src/assets/scopik 43.png";
 import image4 from "/src/assets/vr.png";
 
 
-const categories = ["UI/UX Designer", "AR/VR", "AI", "3D Designer"];
+const categories = ["ALL","UI/UX Designer", "AR/VR", "AI", "3D Designer"];
 
 const Courses = [
   {
@@ -67,7 +67,7 @@ export default function Course() {
       <div className="flex justify-center items-start">
 
         <aside className="md:sticky md:top-28 hidden md:flex w-96 h-96 py-10 px-10 mx-10 my-20 p-4 bg-gray-100 rounded-xl shadow-lg">
-          <ul className="space-y-5">
+          <ul className="space-y-5 flex flex-col justify-center">
             {categories.map((cat, i) => (
                 <a>
               <li
@@ -76,7 +76,7 @@ export default function Course() {
                 className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
               >
                 {cat}
-                <span className="text-xl">›</span>
+                <span className="text-xl mx-10">›</span>
               </li>
               </a>
             ))}
