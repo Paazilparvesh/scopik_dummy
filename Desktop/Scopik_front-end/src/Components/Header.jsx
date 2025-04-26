@@ -56,9 +56,9 @@ function Header() {
           <Link to="/blog" className="">
             Blog
           </Link>
-          <Link to="/" className="">
+          {/* <Link to="/" className="">
             Contact
-          </Link>
+          </Link> */}
           <Link to="/student_dashboard" className="">
             Student Dashboard
           </Link>

@@ -173,12 +173,14 @@ const Login = () => {
 
         {/* Sign In Button */}
         <div className="mb-4">
+          <Link to="/student_dashboard">
           <button
             type="submit"
             className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 transition duration-300"
           >
             Sign In as {role.charAt(0).toUpperCase() + role.slice(1)}
           </button>
+          </Link>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-center sm:text-left">

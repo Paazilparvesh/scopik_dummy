@@ -35,7 +35,7 @@ const InnerCourse = () => {
             {individual.title}
             {/* Digital Marketing */}
           </h1>
-          <p className="max-w-2xl mb-6 mt-6 text-black">
+          <p className="max-w-2xl mt-6 text-black">
             {/* Lorem Ipsum has been the industry's standard dummy text ever since
             the 1500s, when an unknown printer took a galley of type and
             scrambled it to make a type specimen book. It has survived not only
@@ -43,7 +43,7 @@ const InnerCourse = () => {
             remaining essentially unchanged. */}
             {individual.description}
           </p>
-          <div className="flex justify-center md:justify-start gap-4 mt-20">
+          <div className="flex justify-center md:justify-start gap-4 mt-10">
             <button className="bg-[#2600D0] text-white p-2 rounded-lg">
               Enroll Now
             </button>

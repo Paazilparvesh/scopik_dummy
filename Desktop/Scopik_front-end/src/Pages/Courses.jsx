@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import image1 from "/src/assets/scopik 32.png";
-import image2 from "/src/assets/scopik 34.png";
-import image3 from "/src/assets/scopik 43.png";
-import image4 from "/src/assets/vr.png";
+// import image2 from "/src/assets/scopik 34.png";
+// import image3 from "/src/assets/scopik 43.png";
+// import image4 from "/src/assets/vr.png";
 
 import prem from "/src/assets/shield-security.png";
 import time from "/src/assets/timer-start.png"
@@ -15,40 +15,47 @@ const categories = ["ALL", "UI/UX Designer", "AR/VR", "AI", "3D Designer"];
 const Courses = [
   {
     id: 1,
+    title: "python",
+    meta_desc : "Our Python Programming Course is designed for beginners and professionals alike, covering everything from basic concepts like variables and loops to advanced topics like object-oriented programming and real-world project building.",
+    description: "Learn Python from scratch and unlock endless career opportunities in software development, data science, automation, and more. Our Python Programming Course is designed for beginners and professionals alike, covering everything from basic concepts like variables and loops to advanced topics like object-oriented programming and real-world project building. With interactive lessons, hands-on exercises, and expert guidance, you’ll gain the skills needed to build applications, automate tasks, and solve real-world problems. Start your journey with one of the world’s most powerful and in-demand programming languages today!",
+    price: "35000.00",
+    level: "Intermediate",
+    start_date: "2025-04-23",
+    instructor: 35,
     image: image1,
-    title: "Python",
-    description: "Learn Python programming from scratch",
-    category: "UI/UX Designer",
+    total_enrolled: 1,
+    chapters: [
+        {
+            chapter: 1,
+            title: "Chapter - 1",
+            video_url: "https://youtu.be/BVIoAILnZ4Q?si=TS4adnP5tT98w7BX",
+            description: "python"
+            
+        },
+        {
+            chapter: 2,
+            title: "Chapter - 2",
+            video_url: "https://youtu.be/BVIoAILnZ4Q?si=TS4adnP5tT98w7BX",
+            description: "python"
+        },
+        {
+            chapter: 4,
+            title: "Chapter - 3",
+            video_url: "https://youtu.be/BVIoAILnZ4Q?si=TS4adnP5tT98w7BX",
+            description: "python"
+        },
+        {
+            chapter: 5,
+            title: "Chapter - 4",
+            video_url: "https://youtu.be/BVIoAILnZ4Q?si=TS4adnP5tT98w7BX",
+            description: "python"
+        }
+    ],
+    certificate: null,
+    related_courses: [],
+    is_enrolled: false
+},
 
-  },
-  {
-    id: 2,
-    image: image2,
-    title: "React",
-    description: "Learn Python programming from scratch",
-    category: "AR/VR",
-  },
-  {
-    id: 3,
-    image: image3,
-    title: "App Development",
-    description: "Learn Python programming from scratch",
-    category: "AI",
-  },
-  {
-    id: 4,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "3D Designer",
-  },
-  {
-    id: 5,
-    image: image4,
-    title: "Java",
-    description: "Master Java programming and build robust applications.",
-    category: "UI/UX Designer",
-  },
 ];
 export { Courses };
 
@@ -75,7 +82,7 @@ export default function Course() {
               <a>
                 <li
                   key={i}
-                  onClick={() => setSelectedCategory(cat)}
+                  // onClick={() => setSelectedCategory(cat)}
                   className="flex justify-between items-center text-gray-700 font-medium cursor-pointer hover:text-blue-600 transition"
                 >
                   {cat}
@@ -86,7 +93,7 @@ export default function Course() {
           </ul>
         </aside>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 lg:mx-20 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 lg:mx-20 box-border gap-5">
           {filteredCourses.map((course, index) => (
             <Link to={`/course/${course.id}`}>
               <div
@@ -110,7 +117,7 @@ export default function Course() {
                     {course.title}
                   </h1>
                   <p className="text-1xl text-[#555] mb-2">
-                    {course.description}
+                    {course.meta_desc}
                   </p>
                   <span className="flex items-center gap-2 my-4 mx-2">
                     <img src={star} alt="" className="" />

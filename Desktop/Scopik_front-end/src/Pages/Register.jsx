@@ -88,8 +88,9 @@ const Register = () => {
           <button
             type="submit"
             className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 transition duration-300"
-          >
+          ><Link to= "/login">
             Register as {role.charAt(0).toUpperCase() + role.slice(1)}
+            </Link>
           </button>
         </div>
 
